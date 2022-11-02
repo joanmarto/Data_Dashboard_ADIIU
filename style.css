@@ -3,7 +3,7 @@
 }
 
 .navbar-color-txt{
-    color: white;
+    color: white !important;
 }
 
 a{
