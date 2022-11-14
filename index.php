@@ -34,6 +34,9 @@
     <div>
         <h1>Data Dashboard</h1>
     </div>
+    <?php
+        echo "Prueba";
+    ?>
 </body>
 
 </html>
