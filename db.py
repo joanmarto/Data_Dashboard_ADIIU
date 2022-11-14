@@ -7,13 +7,6 @@ def create_mesa_table(buffer):
     #print(mes.to_string)
     mes.to_csv('csv/Mesa.csv', index=False)
 
-def create_partido_table(buffer):
-    open("csv/Partido.csv", "x") #Create file
-    part = buffer[['Partido']]
-    part = part.drop_duplicates(subset='Partido')
-    #print(part.to_string)
-    part.to_csv('csv/Partido.csv', index = False)
-
 def create_votos_table(buffer):
     open("csv/Votos.csv", "x") #Create file
     vot = buffer[['Codigo de mesa','Partido','Num Votos']]
@@ -34,4 +27,3 @@ if __name__ == "__main__":
     create_municipio_table(bf)
     create_votos_table(bf)
     create_mesa_table(bf)
-    create_partido_table(bf)
