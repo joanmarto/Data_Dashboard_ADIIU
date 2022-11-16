@@ -4,12 +4,13 @@ CREATE TABLE Municipio(
 	provincia	varchar(25) NOT NULL,
     cod_mun		int,
     municipio	varchar(25) NOT NULL,
-    PRIMARY KEY (cod_mun)
+    PRIMARY KEY (cod_mun, municipio)
 );
 
 CREATE TABLE Mesa(
 	cod_mesa	varchar(25),
     cod_mun		int,
+    municipio	varchar(25),
     mesa		varchar(5)	NOT NULL,
     censo		int			NOT NULL,
     p_av		int			NOT NULL,
@@ -17,7 +18,7 @@ CREATE TABLE Mesa(
     v_n			int			NOT NULL,
     v_b			int			NOT NULL,
     PRIMARY KEY (cod_mesa),
-    FOREIGN KEY (cod_mun) REFERENCES Municipio(cod_mun)
+    FOREIGN KEY (cod_mun, municipio) REFERENCES Municipio(cod_mun, municipio)
 );
 
 CREATE TABLE Voto(
@@ -36,9 +37,13 @@ GROUP BY partido
 ORDER BY Total_Votos DESC;
 
 /*Shows first and second advance for a given province*/
-/*REVISAR*/
-SELECT partido, SUM(p_av) AS Primer_Avance, SUM(s_av) AS Segundo_Avance FROM municipio JOIN
-mesa ON provincia='LEON' AND municipio.cod_mun=mesa.cod_mun JOIN
+SELECT SUM(p_av) AS Primer_Avance, SUM(s_av) AS Segundo_Avance FROM municipio JOIN
+mesa ON provincia='LEON' AND municipio.cod_mun=mesa.cod_mun AND municipio.municipio=mesa.municipio
+ORDER BY Segundo_Avance DESC;
+
+/*Shows for each party number of votes for a given municipality*/
+SELECT partido, SUM(voto.votos) AS Total_Votos FROM municipio JOIN
+mesa ON municipio.municipio='LEON' AND municipio.cod_mun=mesa.cod_mun AND municipio.municipio=mesa.municipio JOIN
 voto ON mesa.cod_mesa=voto.cod_mesa
 GROUP BY partido
-ORDER BY Segundo_Avance DESC
+ORDER BY Total_Votos DESC;
