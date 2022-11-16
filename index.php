@@ -34,9 +34,28 @@
     <div>
         <h1>Data Dashboard</h1>
     </div>
-    <?php
-        echo "Prueba";
-    ?>
+    <div>
+        <?php
+        // $q = intval($_GET['q']);
+
+        $con = mysqli_connect('localhost', 'joanmarto', '12345');
+
+        if (!$con) {
+            die('Error de conexión: ' . mysqli_error($con));
+        }
+
+        mysqli_select_db($con, "eleccionescyl");
+        $sql = "SELECT partido, SUM(votos) AS Total_Votos FROM voto 
+        GROUP BY partido 
+        ORDER BY Total_Votos DESC";
+        $result = mysqli_query($con, $sql);
+
+        while ($row = mysqli_fetch_array($result)) {
+            echo "<p>" . $row['partido'] . $row['Total_Votos'] . "</p>";
+        }
+        mysqli_close($con);
+        ?>
+    </div>
 </body>
 
 </html>
