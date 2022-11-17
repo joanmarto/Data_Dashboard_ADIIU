@@ -18,7 +18,7 @@
         crossorigin="anonymous"></script>
 
     <!--CSS-->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
