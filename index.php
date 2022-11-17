@@ -41,7 +41,7 @@
         $con = mysqli_connect('localhost', 'joanmarto', '12345');
 
         if (!$con) {
-            die('Error de conexión: ' . mysqli_error($con));
+            die('Error de conexión: ' . mysqli_connect_error());
         }
 
         mysqli_select_db($con, "eleccionescyl");
