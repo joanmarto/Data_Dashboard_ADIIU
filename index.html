@@ -1,6 +1,5 @@
 <!Doctype html>
 <html>
-<!--PRUEBA PARA MOSTRAR PÁGINA-->
 
 <head>
     <title>DataDashboard</title>
@@ -19,7 +18,10 @@
         crossorigin="anonymous"></script>
 
     <!--CSS-->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!--JavaScripr-->
+    <script src="index.js" defer></script>
 </head>
 
 <body>
@@ -29,11 +31,20 @@
             <div class="form-inline">
                 <a class="navbar-brand navbar-color-txt" href="https://www.uib.es/es/">UIB</a>
                 <a class="navbar-brand navbar-color-txt" href="https://datos.gob.es/es/catalogo/a07002862-resultado-electoral-2022">Data Source</a>
+                <a class="navbar-brand navbar-color-txt" href="https://github.com/joanmarto/Data_Dashboard_ADIIU">GitHub</a>
             </div>
         </nav>
     </div>
     <div>
-        <h1>Data Dashboard</h1>
+        <h1>Elecciones Castilla y León 2022</h1>
+    </div>
+
+    <div >  
+        <form onclick="loadProvinces()">
+            <select id="selectProvince" name="users" onchange="showProvince(this.value)">
+                <option value="">Provincia:</option>
+            </select>
+        </form>
     </div>
 </body>
 
