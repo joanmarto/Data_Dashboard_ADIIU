@@ -7,14 +7,13 @@ function showProvince(str) {
         return;
     }
     var xmlhttp = new XMLHttpRequest();
-    
-    //xmlhttp.open("GET", "showadvance.php?q=" + str, true);
-    xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("selectProvince").innerHTML = this.responseText;
         }
     }
+    //xmlhttp.open("GET", "showadvance.php?q=" + str, true);
+    xmlhttp.send();
 }
 
 //Carga las provincias en el <form>
@@ -32,8 +31,6 @@ function loadProvinces() {
 //Muestra higchart avances por provincia
 document.addEventListener("DOMContentLoaded", function () {
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", "showadvance.php?q=", true);
-    xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText);
@@ -76,5 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
     };
+    xmlhttp.open("GET", "showadvance.php?q=", true);
+    xmlhttp.send();
 });
 
