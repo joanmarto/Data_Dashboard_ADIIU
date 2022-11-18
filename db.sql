@@ -36,14 +36,14 @@ SELECT partido, SUM(votos) AS Total_Votos FROM voto
 GROUP BY partido 
 ORDER BY Total_Votos DESC;
 
-/*Shows first and second advance for a given province*/
+/*Shows first and second advance for all provinces*/
 SELECT SUM(p_av) AS Primer_Avance, SUM(s_av) AS Segundo_Avance FROM municipio JOIN
 mesa ON provincia='LEON' AND municipio.cod_mun=mesa.cod_mun AND municipio.municipio=mesa.municipio
 ORDER BY Segundo_Avance DESC;
 
-/*Shows for each party number of votes for a given municipality*/
+/*Shows for each party number of votes for a given province*/
 SELECT partido, SUM(voto.votos) AS Total_Votos FROM municipio JOIN
-mesa ON municipio.municipio='LEON' AND municipio.cod_mun=mesa.cod_mun AND municipio.municipio=mesa.municipio JOIN
+mesa ON municipio.provincia='LEON' AND municipio.cod_mun=mesa.cod_mun AND municipio.municipio=mesa.municipio JOIN
 voto ON mesa.cod_mesa=voto.cod_mesa
 GROUP BY partido
 ORDER BY Total_Votos DESC;

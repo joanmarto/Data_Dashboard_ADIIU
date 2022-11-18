@@ -20,6 +20,9 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <!--Highcharts-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -42,15 +45,24 @@
         <h1>Elecciones Castilla y León 2022</h1>
     </div>
 
-    <div>  
-        <form>
-            <select id="selectProvince" name="users" onchange="showProvince(this.value)">
-            </select>
-        </form>
+    <div> 
+        <!--Votos Totales-->
+        <div>
 
-        <br>
+        </div>
+
+        <!--Avances por provincia-->
         <div id="showAdvance">
+            
+        </div>
 
+        <!--Votos totales por provincia-->
+        <div>
+            <form>
+                <select id="selectProvince" name="users" onchange="showProvince(this.value)">
+                </select>
+            </form>
+    
         </div>
     </div>
 </body>

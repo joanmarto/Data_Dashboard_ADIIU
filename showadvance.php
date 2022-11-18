@@ -1,52 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
 
-table, td, th {
-  border: 1px solid black;
-  padding: 5px;
-}
+  <?php
+  $con = mysqli_connect('localhost', 'joanmarto', '12345');
 
-th {text-align: left;}
-</style>
-</head>
-<body>
+  if (!$con) {
+    die('Error de conexión: ' . mysqli_connect_error());
+  }
 
-<?php
-    $q = strval($_GET['q']);
-
-    $con = mysqli_connect('localhost', 'joanmarto', '12345');
-
-    if (!$con) {
-        die('Error de conexión: ' . mysqli_connect_error());
-    }
-
-    mysqli_select_db($con, "eleccionescyl");
-    $sql = "SELECT SUM(p_av) AS Primer_Avance, SUM(s_av) AS Segundo_Avance FROM municipio JOIN
-    mesa ON provincia='".$q."' AND municipio.cod_mun=mesa.cod_mun AND municipio.municipio=mesa.municipio
+  mysqli_select_db($con, "eleccionescyl");
+  $sql = "SELECT municipio.provincia, SUM(p_av) AS Primer_Avance, SUM(s_av) AS Segundo_Avance FROM municipio JOIN
+    mesa ON municipio.cod_mun=mesa.cod_mun AND municipio.municipio=mesa.municipio
+    GROUP BY municipio.provincia
     ORDER BY Segundo_Avance DESC;";
-    $result = mysqli_query($con, $sql);
+  $result = mysqli_query($con, $sql);
 
-    echo "<table>
-        <tr>
-        <th>Primer Avance</th>
-        <th>Segundo Avance</th>
-        </tr>";
-
-    while ($row = mysqli_fetch_array($result)) {
-        echo "<tr>";
-        echo "<td>" . $row['Primer_Avance'] . "</td>";
-        echo "<td>" . $row['Segundo_Avance'] . "</td>";
-        echo "</tr>";
-    }
-    mysqli_close($con);
-    
-?>
-</body>
-</html>
-
+  $stack = array();
+  while ($row = mysqli_fetch_array($result)) {
+    $data = array("Provincia"=>$row['provincia'], "Primer Avance"=>$row['Primer_Avance'], "Segundo Avance"=>$row['Segundo_Avance']);
+    array_push($stack, $data);
+  }
+  echo json_encode($stack);
+  mysqli_close($con);
+  ?>
