@@ -11,6 +11,7 @@
     $sql = "SELECT DISTINCT provincia  FROM Municipio";
     $result = mysqli_query($con, $sql);
 
+    echo "<option>Provincia:</option>";
     while ($row = mysqli_fetch_array($result)) {
         echo "<option>".$row['provincia']."</option>";
     }

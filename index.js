@@ -1,8 +1,22 @@
-function showProvince() { }
+loadProvinces();
+
+function showProvince(str) {
+    if (str == "") {
+        document.getElementById("showAdvance").innerHTML = "";
+        return;
+    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("showAdvance").innerHTML = this.responseText;
+        }
+    }
+    xmlhttp.open("GET", "showadvance.php?q=" + str, true);
+    xmlhttp.send();
+}
+
 
 function loadProvinces() {
-    console.log("loading");
-
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
