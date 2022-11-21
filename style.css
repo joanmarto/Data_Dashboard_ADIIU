@@ -6,6 +6,10 @@
     color: white !important;
 }
 
+.margin{
+    margin: 50px !important;
+}
+
 a{
     color: white;
     display: inline-block;

@@ -22,6 +22,8 @@
 
     <!--Highcharts-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <!--CSS-->
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -45,9 +47,9 @@
         <h1>Elecciones Castilla y León 2022</h1>
     </div>
 
-    <div> 
+    <div class="margin"> 
         <!--Votos Totales-->
-        <div>
+        <div id="showTotalVots" >
 
         </div>
 
@@ -58,11 +60,14 @@
 
         <!--Votos totales por provincia-->
         <div>
+            <p>Seleccione una provincia para ver los votos por provincia</p>
             <form>
                 <select id="selectProvince" name="users" onchange="showProvince(this.value)">
                 </select>
             </form>
-    
+            <div id="TotalVotsForProvince">
+
+            </div>
         </div>
     </div>
 </body>

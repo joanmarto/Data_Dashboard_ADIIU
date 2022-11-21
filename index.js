@@ -1,5 +1,7 @@
 loadProvinces();
 
+const MAX_PARTY = 6;
+
 //Muestra los votos totales de una provincia seleccionada
 function showProvince(str) {
     if (str == "") {
@@ -9,10 +11,55 @@ function showProvince(str) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("selectProvince").innerHTML = this.responseText;
+            data = JSON.parse(this.responseText)
+            console.log(data);
+
+            let series = [];
+            
+            for(let i = 0; i < MAX_PARTY; i++){
+                series[i] = [data[i]['Partido'], parseInt(data[i]['Total_Votos'])];
+            }
+        
+            const chart = Highcharts.chart('TotalVotsForProvince', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Total Votos ' + str,
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: -50,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%'],
+                        size: '110%'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Total Votos',
+                    innerSize: '50%',
+                    data: series
+                }]
+            });
         }
     }
-    //xmlhttp.open("GET", "showadvance.php?q=" + str, true);
+    xmlhttp.open("GET", "totalVotsProv.php?q=" + str, true);
     xmlhttp.send();
 }
 
@@ -28,13 +75,68 @@ function loadProvinces() {
     xmlhttp.send();
 }
 
+//Muestra higchart votos totales
+document.addEventListener("DOMContentLoaded", function () {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            data = JSON.parse(this.responseText);
+            
+            let series = [];
+            
+            for(let i = 0; i < MAX_PARTY; i++){
+                series[i] = [data[i]['Partido'], parseInt(data[i]['Total_Votos'])];
+            }
+        
+            const chart = Highcharts.chart('showTotalVots', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: 0,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Total Votos',
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            enabled: true,
+                            distance: -50,
+                            style: {
+                                fontWeight: 'bold',
+                                color: 'white'
+                            }
+                        },
+                        startAngle: -90,
+                        endAngle: 90,
+                        center: ['50%', '75%'],
+                        size: '110%'
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Total Votos',
+                    innerSize: '50%',
+                    data: series
+                }]
+            });
+        }
+    };
+    xmlhttp.open("GET", "totalVots.php", true);
+    xmlhttp.send();
+});
+
 //Muestra higchart avances por provincia
 document.addEventListener("DOMContentLoaded", function () {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText);
-
             let provincias = [];
             let primer_av = [];
             let segundo_av = [];
