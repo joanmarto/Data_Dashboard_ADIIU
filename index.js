@@ -21,8 +21,8 @@ function showProvince(str) {
                 //series[i] = [data[i]['Partido'], parseInt(data[i]['Total_Votos'])];
                 partidos[i] = data[i]['Partido'];
             }
-            console.log(partidos);
-            for (let i = 0; i < MAX_PARTY; i++){
+
+            for (let i = 0; i < MAX_PARTY; i++) {
                 votos[i] = parseInt(data[i]['Total_Votos']);
             }
 
