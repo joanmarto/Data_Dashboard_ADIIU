@@ -14,16 +14,21 @@ function showProvince(str) {
             data = JSON.parse(this.responseText)
 
             let series = [];
+            let partidos = [];
+            let votos = [];
 
             for (let i = 0; i < MAX_PARTY; i++) {
-                series[i] = [data[i]['Partido'], parseInt(data[i]['Total_Votos'])];
+                //series[i] = [data[i]['Partido'], parseInt(data[i]['Total_Votos'])];
+                partidos[i] = data[i]['Partido'];
+            }
+            console.log(partidos);
+            for (let i = 0; i < MAX_PARTY; i++){
+                votos[i] = parseInt(data[i]['Total_Votos']);
             }
 
             const chart = Highcharts.chart('TotalVotsForProvince', {
                 chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: 0,
-                    plotShadow: false
+                    type: 'column'
                 },
                 title: {
                     text: 'Total Votos ' + str,
@@ -33,27 +38,13 @@ function showProvince(str) {
                         valueSuffix: '%'
                     }
                 },
-                plotOptions: {
-                    pie: {
-                        dataLabels: {
-                            enabled: true,
-                            distance: -50,
-                            style: {
-                                fontWeight: 'bold',
-                                color: 'white'
-                            }
-                        },
-                        startAngle: -90,
-                        endAngle: 90,
-                        center: ['50%', '75%'],
-                        size: '110%'
-                    }
+                xAxis: {
+                    categories: partidos,
+                    crosshair: true
                 },
                 series: [{
-                    type: 'pie',
-                    name: 'Total Votos',
-                    innerSize: '50%',
-                    data: series
+                    name: 'Votos Obtenidos',
+                    data: votos
                 }]
             });
         }
