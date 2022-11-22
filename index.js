@@ -42,6 +42,12 @@ function showProvince(str) {
                     categories: partidos,
                     crosshair: true
                 },
+                yAxis: {
+                    title: {
+                        useHTML: true,
+                        text: ''
+                    }
+                },
                 series: [{
                     name: 'Votos Obtenidos',
                     data: votos
