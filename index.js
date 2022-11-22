@@ -12,14 +12,13 @@ function showProvince(str) {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText)
-            console.log(data);
 
             let series = [];
-            
-            for(let i = 0; i < MAX_PARTY; i++){
+
+            for (let i = 0; i < MAX_PARTY; i++) {
                 series[i] = [data[i]['Partido'], parseInt(data[i]['Total_Votos'])];
             }
-        
+
             const chart = Highcharts.chart('TotalVotsForProvince', {
                 chart: {
                     plotBackgroundColor: null,
@@ -81,13 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText);
-            
+
             let series = [];
-            
-            for(let i = 0; i < MAX_PARTY; i++){
+
+            for (let i = 0; i < MAX_PARTY; i++) {
                 series[i] = [data[i]['Partido'], parseInt(data[i]['Total_Votos'])];
             }
-        
+
             const chart = Highcharts.chart('showTotalVots', {
                 chart: {
                     plotBackgroundColor: null,
@@ -141,13 +140,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let primer_av = [];
             let segundo_av = [];
 
-            for(let i = 0; i < data.length; i++){
+            for (let i = 0; i < data.length; i++) {
                 provincias[i] = data[i]['Provincia'];
             }
-            for(let i = 0; i < data.length; i++){
+            for (let i = 0; i < data.length; i++) {
                 primer_av[i] = parseInt(data[i]['Primer Avance']);
             }
-            for(let i = 0; i < data.length; i++){
+            for (let i = 0; i < data.length; i++) {
                 segundo_av[i] = parseInt(data[i]['Segundo Avance']);
             }
             const chart = Highcharts.chart('showAdvance', {

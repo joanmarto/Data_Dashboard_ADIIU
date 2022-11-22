@@ -1,6 +1,4 @@
-
 <?php
-// $q = intval($_GET['q']);
 
 $con = mysqli_connect('localhost', 'joanmarto', '12345');
 
@@ -22,4 +20,3 @@ while ($row = mysqli_fetch_array($result)) {
 }
 echo json_encode($stack);
 mysqli_close($con);
-?>

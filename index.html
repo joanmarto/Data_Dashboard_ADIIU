@@ -33,13 +33,15 @@
 </head>
 
 <body>
-    <div class= "navbar-color-txt">
-        <nav class= "navbar navbar-light justify-content-between navbar-bg">
-            <a class= "navbar-brand navbar-color-txt" href="#">Data Dashboard</a>
+    <div class="navbar-color-txt">
+        <nav class="navbar navbar-light justify-content-between navbar-bg">
+            <a class="navbar-brand navbar-color-txt" href="#">Data Dashboard</a>
             <div class="form-inline">
                 <a class="navbar-brand navbar-color-txt" href="https://www.uib.es/es/">UIB</a>
-                <a class="navbar-brand navbar-color-txt" href="https://datos.gob.es/es/catalogo/a07002862-resultado-electoral-2022">Data Source</a>
-                <a class="navbar-brand navbar-color-txt" href="https://github.com/joanmarto/Data_Dashboard_ADIIU">GitHub</a>
+                <a class="navbar-brand navbar-color-txt"
+                    href="https://datos.gob.es/es/catalogo/a07002862-resultado-electoral-2022">Data Source</a>
+                <a class="navbar-brand navbar-color-txt"
+                    href="https://github.com/joanmarto/Data_Dashboard_ADIIU">GitHub</a>
             </div>
         </nav>
     </div>
@@ -47,28 +49,29 @@
         <h1>Elecciones Castilla y León 2022</h1>
     </div>
 
-    <div class="margin"> 
+    <div class="DataDashboard">
         <!--Votos Totales-->
-        <div id="showTotalVots" >
-
-        </div>
-
-        <!--Avances por provincia-->
-        <div id="showAdvance">
-            
+        <div id="showTotalVots" class="totalvotos">
         </div>
 
         <!--Votos totales por provincia-->
-        <div>
-            <p>Seleccione una provincia para ver los votos por provincia</p>
-            <form>
-                <select id="selectProvince" name="users" onchange="showProvince(this.value)">
-                </select>
-            </form>
+        <div class="votosProvincia">
+            <div class="form">
+                <p>Seleccione una provincia para ver los votos por provincia</p>
+                <form>
+                    <select id="selectProvince" name="users" onchange="showProvince(this.value)">
+                    </select>
+                </form>
+            </div>
             <div id="TotalVotsForProvince">
 
             </div>
         </div>
+
+        <!--Avances por provincia-->
+        <div id="showAdvance" class="showAdvance">
+        </div>
+
     </div>
 </body>
 
