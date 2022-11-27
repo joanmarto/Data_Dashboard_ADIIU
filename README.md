@@ -8,5 +8,5 @@ Los datos que componen la base de datos pueden encontrarse en la carpeta [csv](h
 
 La base de datos está montada sobre Xampp. Puede instalarse [aquí](https://www.apachefriends.org/es/index.html). El código sql para montar las tablas está incluido en este proyecto. Una vez creadas las tablas de la base de datos podremos importar los datos de los archivos csv.
 
-##Interfaz
+## Interfaz
 Para configurar el front-end se ha utilizado Bootstrap y CSS, así como JavaScript para modificar el DOM de la página y generar los Highcharts. Para el servidor web utilizamos Xampp, como hemos mencionado antes, y PHP para realizar las consultas a la base de datos.
