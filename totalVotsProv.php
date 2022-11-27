@@ -17,7 +17,6 @@ $result = mysqli_query($con, $sql);
 
 $stack = array();
 while ($row = mysqli_fetch_array($result)) {
-    //echo "<p>" . $row['partido'] . $row['Total_Votos'] . "</p>";
     $data = array("Partido" => $row['partido'], "Total_Votos" => $row['Total_Votos']);
     array_push($stack, $data);
 }
