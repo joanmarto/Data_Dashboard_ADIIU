@@ -13,7 +13,6 @@ function showProvince(str) {
         if (this.readyState == 4 && this.status == 200) {
             data = JSON.parse(this.responseText)
 
-            let series = [];
             let partidos = [];
             let votos = [];
 

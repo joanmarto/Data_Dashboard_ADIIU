@@ -12,3 +12,5 @@ La base de datos está montada sobre Xampp. Puede instalarse [aquí](https://www
 Para configurar el front-end se ha utilizado Bootstrap y CSS, así como JavaScript para modificar el DOM de la página y generar los Highcharts. Para el servidor web utilizamos Xampp, como hemos mencionado antes, y PHP para realizar las consultas a la base de datos.
 
 Para visualizar el Datadashboard en nuestro navegador, debemos clonar el proyecto en la carpeta 'htdocs' de Xampp. Una vez hecho esto solo debemos iniciar el servidor Apache y la base de dastos e introducir en la barra de búsqueda de nuestro navegador [localhost/Data_Dashboard_ADIIU](http://localhost/Data_Dashboard_ADIIU/).
+
+Enlace para ver el video en [Youtube](https://youtu.be/vt51ErwR1cE).
